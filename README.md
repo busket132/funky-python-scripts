@@ -1,1 +1,3 @@
 This repo contains my funky python scripts that i made for various reasons 
+
+Most of them rely on "EZTkinter.py" that i used to make TKinter even easier...
