@@ -8,15 +8,15 @@ root = tk.Tk()
 
 
 def get_executable_name():
-    # Получаем полный путь к исполняемому файлу
+    # getting executable
     if getattr(sys, 'frozen', False):
-        # Если это скомпилированный exe
+        # if .exe
         return os.path.basename(sys.executable)
     else:
-        # Если это Python скрипт
+        # if .py
         return os.path.basename(sys.argv[0])
 
-def Resize_Enabler(string1):
+def Resize_Enabler(string1): #handles if program is resizable or not
     if string1.lower() == "true":
         root.resizable(True, True)
     else:
@@ -75,30 +75,12 @@ def Get(value1):
 
 def CreateWindow(value1,value2, string1):
     executable_name = get_executable_name()
-        # Убираем расширение .exe если оно есть
-    executable_name_NoExe = os.path.splitext(executable_name)[0]
-    #script_name = os.path.basename(__file__)
-    #print(script_name)
+        # was meant to remove .exe in file name
+    #executable_name_NoExe = os.path.splitext(executable_name)[0]
     root.geometry(str(value1) + "x" + str(value2))
     root.title(string1)
-    def on_closing():
-        sp.Popen('taskkill /im ' + str(executable_name) + ' /f')
+    def on_closing(): #handle killing process when user tries to close program, meant to be used when compiled into .exe
+        sp.Popen('taskkill /im ' + str(executable_name) + ' /f') #added str() just to be sure, it doesnt rly matter if its there or not, btw executable shouldn't contain any spaces, use _ or - or literally anything but spaces instead
     root.protocol("WM_DELETE_WINDOW", on_closing)
     root.mainloop()
-
-
-
-#CreateWindow()
-
-    
-
-
-#CreateWindow(100,100)
-
-'''def on_closing():
-    
-    # Terminate minecraft.exe process
-    sp.Popen('taskkill /im python.exe /f')
-    root.destroy()
-
-root.protocol("WM_DELETE_WINDOW", on_closing)'''
+#yeah code is prolly trash but it works and i can understand and use it so ig it doesnt matter
