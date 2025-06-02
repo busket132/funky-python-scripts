@@ -44,6 +44,14 @@ def Add_Label(string1,*args):
 
 entries = {}
 
+def Add_CheckButton(string1, *args):
+    for arg in args:
+        checkb["checkb"+str(arg)] = tk.Checkbutton(root, text=string1)
+        checkb["checkb"+str(arg)].pack()
+    return checkb["checkb"+str(arg)]
+
+checkb = {}
+
 def Add_Entry_DV(string1, value1="", *args):
     var = tk.StringVar(value=value1)
     if args:
@@ -55,8 +63,6 @@ def Add_Entry_DV(string1, value1="", *args):
         entry = tk.Entry(root, textvariable=var)
         entry.pack()
         return entry
-
-
 
 def Boolean(value1):
     return tk.BooleanVar(value=value1)
